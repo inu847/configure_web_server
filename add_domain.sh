@@ -111,4 +111,3 @@ echo "HTTP :  http://${DOMAIN}"
 echo "HTTPS:  https://${DOMAIN}"
 echo "Conf :  ${NGINX_CONF}"
 echo "Root :  ${WEBROOT}"
-0000000112
