@@ -45,8 +45,10 @@ if [[ -z "$mysql_username" || -z "$mysql_password" ]]; then
 fi
 
 # Escape special characters untuk keamanan
-mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed 's/[\'"]/\\&/g')
-mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed 's/[\'"]/\\&/g')
+# mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed 's/[\'"]/\\&/g')
+# mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed 's/[\'"]/\\&/g')
+mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed "s/['\"]/\\\&/g")
+mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed "s/['\"]/\\\&/g")
 
 echo "Membuat user MySQL: $mysql_username"
 mysql -u root <<EOF
