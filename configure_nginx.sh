@@ -45,8 +45,6 @@ if [[ -z "$mysql_username" || -z "$mysql_password" ]]; then
 fi
 
 # Escape special characters untuk keamanan
-# mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed 's/[\'"]/\\&/g')
-# mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed 's/[\'"]/\\&/g')
 mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed "s/['\"]/\\\&/g")
 mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed "s/['\"]/\\\&/g")
 
@@ -68,12 +66,18 @@ else
 fi
 
 echo "===> Open Port"
-ufw allow 80/tcp
+# ufw allow 80/tcp
+# ufw allow 80/tcp
+# ufw allow 443/tcp
+# ufw allow 3306
+# ufw allow 22
+# ufw enable
+
 ufw allow 80/tcp
 ufw allow 443/tcp
-ufw allow 3306
-ufw allow 22
-ufw enable
+ufw allow 3306/tcp
+ufw allow 22/tcp
+ufw --force enable
 
 echo "===> Restart MySQL Service"
 systemctl restart mysql
