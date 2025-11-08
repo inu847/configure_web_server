@@ -53,7 +53,7 @@ mysql -u root <<'EOF'
 CREATE USER IF NOT EXISTS '$mysql_username_escaped'@'%' IDENTIFIED BY '$mysql_password_escaped';
 GRANT ALL PRIVILEGES ON *.* TO '$mysql_username_escaped'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-EOF
+'EOF'
 
 echo "User MySQL '$mysql_username' berhasil dibuat!"
 
