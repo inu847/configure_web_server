@@ -32,19 +32,19 @@ chown -R www-data:www-data "${WEBROOT}"
 chmod -R 755 "${WEBROOT}"
 
 # Tambah index.php contoh jika Laravel belum ada
-if [[ ! -f "${WEBROOT}/public/index.php" && ! -f "${WEBROOT}/index.php" ]]; then
-  mkdir -p "${WEBROOT}/public"
-  cat > "${WEBROOT}/public/index.php" <<'EOF'
+if [[ ! -f "${WEBROOT}/index.php" && ! -f "${WEBROOT}/index.php" ]]; then
+  mkdir -p "${WEBROOT}"
+  cat > "${WEBROOT}/index.php" <<'EOF'
 <?php
 echo "<h1>Laravel Ready (via Nginx on port 8000)</h1>";
 if (file_exists('artisan')) {
     echo "<p>✅ Terdeteksi: Ini adalah project Laravel.</p>";
 } else {
-    echo "<p>ℹ️ Tempatkan project Laravel di sini dan pastikan /public tersedia.</p>";
+    echo "<p>ℹ️ Tempatkan project Laravel di sini dan pastikan tersedia.</p>";
 }
 ?>
 EOF
-  chown www-data:www-data "${WEBROOT}/public/index.php"
+  chown www-data:www-data "${WEBROOT}/index.php"
 fi
 
 # -- Deteksi PHP-FPM -----------------------------------------------
@@ -76,7 +76,7 @@ server {
     # IP atau wildcard (0.0.0.0)
     server_name _ ${IP_ADDR};
 
-    root ${WEBROOT}/public;
+    root ${WEBROOT};
     index index.php index.html index.htm;
 
     location / {
