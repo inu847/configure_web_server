@@ -49,7 +49,7 @@ mysql_username_escaped=$(printf '%s\n' "$mysql_username" | sed 's/[\'"]/\\&/g')
 mysql_password_escaped=$(printf '%s\n' "$mysql_password" | sed 's/[\'"]/\\&/g')
 
 echo "Membuat user MySQL: $mysql_username"
-mysql -u root <<EOF
+mysql -u root <<'EOF'
 CREATE USER IF NOT EXISTS '$mysql_username_escaped'@'%' IDENTIFIED BY '$mysql_password_escaped';
 GRANT ALL PRIVILEGES ON *.* TO '$mysql_username_escaped'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
