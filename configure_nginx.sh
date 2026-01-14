@@ -19,8 +19,8 @@ add-apt-repository ppa:ondrej/php -y
 apt update
 
 echo "===> Install PHP 8.3 dan Ekstensi"
-apt install php8.3 php8.3-fpm php8.3-mysql php8.3-mbstring php8.3-xml \
-php8.3-bcmath php8.3-curl php8.3-zip unzip -y
+apt install php8.4 php8.4-fpm php8.4-mysql php8.4-mbstring php8.4-xml \
+php8.4-bcmath php8.4-curl php8.4-zip unzip -y
 
 echo "===> Install Composer"
 curl -sS https://getcomposer.org/installer | php
