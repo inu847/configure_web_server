@@ -14,6 +14,7 @@ echo "===> Install Nginx"
 apt install nginx -y
 
 echo "===> Tambah Repository PHP Ondrej"
+apt install software-properties-common -y
 add-apt-repository ppa:ondrej/php -y
 apt update
 
