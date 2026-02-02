@@ -98,3 +98,5 @@ EOF
 
 # Aktifkan config
 ln -sf "${NGINX_CONF}" "/etc/nginx/sites-enabled/laravel-local-${PORT}"
+nginx -t
+systemctl reload nginx
